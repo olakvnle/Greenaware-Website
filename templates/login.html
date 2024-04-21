@@ -1,0 +1,38 @@
+{% extends 'layout.html'%}
+{% load static %}
+{% block  content %}
+			<main class="main-content">
+
+				<div class="fullwidth-block">
+					<div class="container">
+						<div class="row">
+							<div class="content col-md-8">
+								<div class="sidebar col-md-6 ">
+									<div class="widget ">
+										<h3 class="widget-title">Login to your account</h3>
+										<form action="#" class="login_observer">
+											<div class="col-md-12 mb-3">
+											  <label for="email" class="form-label">Email address</label>
+											  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+											</div>
+
+											<div class="col-md-12 mb-3">
+											  <label for="password" class="form-label">Password</label>
+											  <input type="password" class="form-control" name="password" id="password" >
+											</div>
+
+											<button class="" type="submit" >Login</button>
+										</form>
+
+										<p>New Observer!  <a href="{% url 'observer' %}"> Register</a></p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</main> <!-- .main-content -->
+        <script src="{% static 'js/observer/login.js'%}" ></script>
+
+{% endblock content%}
