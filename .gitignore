@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Secrets and sensitive data
+.env
+
+# Static and media files
+staticfiles/
+media/
+
+# Django migration files
+*/migrations/*.py
+*/migrations/*.pyc
