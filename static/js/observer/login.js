@@ -42,6 +42,7 @@ Login.addEventListener('submit',(e)=>{
         }),
     })
     .then((res) => {
+        console.log(res)
         if (!res.ok) {
             throw new Error('Failed to authenticate');
         }
@@ -55,7 +56,7 @@ Login.addEventListener('submit',(e)=>{
             localStorage.setItem('refreshToken', data.refresh);
 
             // Redirect the user to another page, such as the dashboard
-            window.location.href = '/dashboard';
+            window.location.href = '/observer/dashboard';
         } else {
             // Handle the case where tokens are missing in the response
             toast('Invalid response from the server', 'error');
@@ -64,7 +65,7 @@ Login.addEventListener('submit',(e)=>{
     .catch((error) => {
         // Handle errors, such as network errors or server errors
         console.error('Error:', error);
-        toast('An error occurred during login', 'error');
+        toast('No active account found with the given credentials');
     });
 });
 

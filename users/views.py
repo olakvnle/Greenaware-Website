@@ -1,6 +1,6 @@
 from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-
+from django.contrib import messages
 import requests
 
 
@@ -15,11 +15,14 @@ class ActivateObserverView(View):
             verify=False,  # Disable SSL verification (only for development/testing)
             headers={'Content-Type': 'application/json'}
         )
+        if response.status_code == 204:
+            messages.success(request, 'Activation successful.')
+            return HttpResponseRedirect('/observer/login')
 
-        if 'uid' in response.json():
-            return HttpResponseRedirect('/resend-activation')
+        if 'detail' in response.json():
+            messages.info(request,'Account has already been Activation successful.')
+            return HttpResponseRedirect('/observer/login')
         elif 'token' in response.json():
             return HttpResponseRedirect('/resend-activation')
-        elif 'detail' in response.json():
-            return HttpResponseRedirect('/login')#, message="Account has been activated"
-
+        elif 'uid' in response.json():
+            return HttpResponseRedirect('/resend-activation')

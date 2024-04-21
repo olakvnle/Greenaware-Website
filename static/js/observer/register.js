@@ -20,18 +20,32 @@ Register.addEventListener('submit',(e)=>{
 
     e.preventDefault();
 
-        if (email.value === "")
+        if (email.value === ""){
             toast('Email address field may not be blank','warning')
-        else  if (first_name.value === "")
-            toast('First name field may not be blank','warning')
-        else  if (last_name.value === "")
-            toast('Last name field may not be blank','warning')
-        else  if (password.value === "")
-            toast('Password field may not be blank','warning')
-        else  if (re_password.value === "")
-            toast('Confirm password field may not be blank','warning')
+            return
+        }
 
-    if (email.value.length > 0) {
+        else  if (first_name.value === ""){
+            toast('First name field may not be blank','warning')
+            return
+        }
+
+        else  if (last_name.value === ""){
+             toast('Last name field may not be blank','warning')
+            return
+        }
+
+        else  if (password.value === ""){
+             toast('Password field may not be blank','warning')
+            return
+        }
+        else  if (re_password.value === ""){
+            toast('Confirm password field may not be blank','warning')
+            return;
+        }
+
+
+    // if (email.value.length > 0) {
         fetch(API_URL + 'users/', {
             body: JSON.stringify({
                 'email': email.value,
@@ -45,19 +59,22 @@ Register.addEventListener('submit',(e)=>{
             },
             method: 'POST'
         })
-            .then((res) => res.json())
+            .then(response =>  response.json())
             .then((data) => {
-
                 if(data.status==="success")
                     toast('Please check your Email to activate your account')
-                else if (data.password){
-
+                else if (data.non_field_errors && data.non_field_errors.length > 0){
+                     toast(data.non_field_errors[0],'warning')
                 }
-
-                console.log(data)
+                else if (data.password && data.password.length > 0){
+                     toast(data.password[0],'warning')
+                }
+                else if (data.email && data.email.length > 0){
+                     toast(data.email[0],'warning')
+                }
+                //console.log(data)
             })
-
-    }
+    // }
 })
 
 
