@@ -1,13 +1,56 @@
 {% extends 'layout.html'%}
 {% load static %}
 {% block  content %}
-			<main class="main-content">
-
-				<div class="fullwidth-block">
+    
+    <div class="fullwidth-block">
 					<div class="container">
 						<div class="row">
 							<div class="content col-md-8">
-								<div class="sidebar col-md-6 ">
+								<div class="post single">
+									<h2 class="entry-title">Welcome Weather Observer!</h2>
+									<div class="featured-image"><img src="" alt=""></div>
+									
+									<div class="entry-content">
+										<p>Thank you for your interest in contributing to our weather observation network. Your participation is crucial in helping us
+											gather accurate and consistent weather data.</p>
+										<h3>Why Weather Observations Matter</h3>
+										<p>Weather observations play an important role in understanding local weather patterns, forecasting, and ensuring the safety of communities.
+											By providing your observations, you contribute to a better understanding of the weather in your area, which ultimately
+											helps us make more informed decisions and improve forecasts.</p>
+										<h3>Online Course Requirement</h3>
+										<ul>Before you can start providing weather data, we require all observers to undergo an online course.
+											This course will cover important topics such as:
+
+											<li>Understanding weather instruments and measurements.</li>
+											<li>Proper observation techniques and protocols.</li>
+											<li>Safety precautions and best practices for weather observation.</li>
+											<li>How to report your observations accurately and efficiently.</li>
+										</ul>
+										<p></p>
+										<h3>Ensuring Accuracy and Consistency</h3>
+
+										<p>Accuracy and consistency are essential for reliable weather data. By completing the online course, you'll learn the
+										skills necessary to make precise observations and ensure consistency in your reports. This ensures that our
+											data remains reliable and useful for various applications, including forecasting, research, and emergency preparedness.</p>
+
+										<h3>Get Started</h3>
+
+										<p>Ready to become a certified weather observer? Click [here] to begin the online course and start your journey in
+											contributing to our weather observation network.</p>
+
+										<p>Thank you for your dedication to providing accurate weather data. Together, we can make a difference in
+											understanding and preparing for the ever-changing weather.</p>
+
+										<p>Warm regards,</p>
+
+										<h3>Greenware</h3>
+
+									</div>
+
+								</div>
+
+							</div>
+						<div class="sidebar col-md-4 ">
 									<div class="widget ">
 										<h3 class="widget-title">Login to your account</h3>
 										<form action="#" class="login_observer">
@@ -27,6 +70,20 @@
 										<p>New Observer!  <a href="{% url 'observer' %}"> Register</a></p>
 									</div>
 								</div>
+						</div>
+					</div>
+				</div>
+			</main> <!-- .main-content -->
+    
+    
+    
+			<main class="main-content">
+
+				<div class="fullwidth-block">
+					<div class="container">
+						<div class="row">
+							<div class="content col-md-8">
+								
 							</div>
 
 						</div>
