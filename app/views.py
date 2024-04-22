@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class EmailValidationView(View):
@@ -19,27 +21,20 @@ class IndexView(View):
         return render(request, 'index.html')
 
 
-class ObserverRegisterView(View):
-    def get(self, request):
-        return render(request, 'observer.html')
-
-
 class APIView(View):
     def get(self, request):
         return render(request, 'api.html')
 
 
-class LoginView(View):
-    def get(self, request):
-        return render(request, 'login.html')
+class DashboardView(LoginRequiredMixin,View):
 
-
-class DashboardView(View):
     def get(self, request):
+
         context = {
             'page_name': 'Dashboard'
         }
         return render(request, 'observer/dashboard.html', context)
+
 
 
 class CourseView(View):

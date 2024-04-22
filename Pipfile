@@ -7,6 +7,12 @@ name = "pypi"
 django = "*"
 django-cors-headers = "*"
 requests = "*"
+djoser = "*"
+python-decouple = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
+python-dotenv = "*"
+six = "*"
 
 [dev-packages]
 

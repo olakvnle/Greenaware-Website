@@ -11,16 +11,26 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
-from os import path, getenv
-
+from os import getenv, path
+from django.core.management.utils import get_random_secret_key  # for generating secret key
+import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+"""
+Custom Settings
+Check if the environment variables (.env) file exists and load it
+"""
+dotenv_file = BASE_DIR / '.env'
+if path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8b4yb8lu88=#z%w-kd4!@7!fyi*$bay8iao*l__nv&7ta2bbro'
+SECRET_KEY = getenv('SECRET_KEY', get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +49,7 @@ INSTALLED_APPS = [
     'app',
     'users',
     'corsheaders',
+    'rest_framework',
 
 ]
 
@@ -53,9 +64,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8090',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://127.0.0.1:8090',
+# ]
 
 ROOT_URLCONF = 'core.urls'
 
@@ -105,8 +116,39 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+
+
+"""
+Custom Setting for Authentication Backend
+"""
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+
+
+"""
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+"""
+EMAIL_HOST = 'mail.rashkemsoft.com.ng'
+EMAIL_HOST_USER = 'admin@rashkemsoft.com.ng'
+EMAIL_HOST_PASSWORD = 'admin4rashkem'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'admin@rashkemsoft.com.ng'
+
+
+
+CORS_ALLOWED_ORIGINS = []
+
+DOMAIN = getenv('DOMAIN')
+
+SITE_NAME = 'Team 2'
+
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
+# https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -117,15 +159,17 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.UserAccount'
+LOGIN_URL = '/login/'

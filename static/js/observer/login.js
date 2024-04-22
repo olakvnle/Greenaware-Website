@@ -1,11 +1,11 @@
 'use strict'
 
-const API_URL = 'http://127.0.0.1:8000/api/v1/';
+const Base_URL = 'http://127.0.0.1:8090/';
 
 const emailField = document.querySelector('#email');
 const passwordField = document.querySelector('#password');
-const Login = document.querySelector('.login_observer');
-
+const Login = document.querySelector('.login');
+const csrfTokenElement = document.getElementsByName('csrfmiddlewaretoken')[0]
 
 
 
@@ -31,11 +31,12 @@ Login.addEventListener('submit',(e)=>{
     }
 
     // Make a POST request to the login endpoint
-    fetch(API_URL + 'jwt/create/', {
+    fetch(Base_URL + 'login/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
-        },
+                 'Content-Type': 'application/json',
+                 'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
+             },
         body: JSON.stringify({
             email,
             password,
@@ -49,18 +50,14 @@ Login.addEventListener('submit',(e)=>{
         return res.json();
     })
     .then((data) => {
-        // Check if the response contains both access and refresh tokens
-        if (data.access && data.refresh) {
-            // Store the tokens securely, for example, in local storage
-            localStorage.setItem('accessToken', data.access);
-            localStorage.setItem('refreshToken', data.refresh);
-
-            // Redirect the user to another page, such as the dashboard
-            window.location.href = '/observer/dashboard';
-        } else {
-            // Handle the case where tokens are missing in the response
-            toast('Invalid response from the server', 'error');
+        if (data.msg ) {
+            window.location.href = data.msg;
+        } else if (data.activate_error) {
+            toast(data.activate_error, 'warning');
+        }else if (data.error) {
+            toast(data.error, 'warning');
         }
+
     })
     .catch((error) => {
         // Handle errors, such as network errors or server errors

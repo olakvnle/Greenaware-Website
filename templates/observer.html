@@ -54,7 +54,9 @@
 							<div class="sidebar col-md-4 ">
 								<div class="widget">
 									<h3 class="widget-title">Register</h3>
+                                    
 									<form action="#" class="register_observer">
+                                        {% csrf_token %}
 										<div class="col-md-12 mb-3">
 										  <label for="email" class="form-label">Email address</label>
 										  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" >

@@ -1,6 +1,6 @@
 'use strict'
 
-const API_URL = 'http://127.0.0.1:8000/api/v1/';
+const Base_url = 'http://127.0.0.1:8090/';
 
 const email = document.querySelector('#email');
 const first_name = document.querySelector('#first_name');
@@ -8,6 +8,7 @@ const last_name = document.querySelector('#last_name');
 const password = document.querySelector('#password');
 const re_password = document.querySelector('#re_password');
 const Register = document.querySelector('.register_observer');
+const csrfTokenElement = document.getElementsByName('csrfmiddlewaretoken')[0]
 
 
 
@@ -46,7 +47,12 @@ Register.addEventListener('submit',(e)=>{
 
 
     // if (email.value.length > 0) {
-        fetch(API_URL + 'users/', {
+        fetch(Base_url+'observer/', {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
+             },
             body: JSON.stringify({
                 'email': email.value,
                 'first_name': first_name.value,
@@ -54,25 +60,22 @@ Register.addEventListener('submit',(e)=>{
                 'password': password.value,
                 're_password': re_password.value
             }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
+
         })
             .then(response =>  response.json())
             .then((data) => {
-                if(data.status==="success")
+                if(data.success)
                     toast('Please check your Email to activate your account')
-                else if (data.non_field_errors && data.non_field_errors.length > 0){
-                     toast(data.non_field_errors[0],'warning')
+                else if (data.email_error && data.email_error.length > 0){
+                     toast(data.email_error,'warning')
                 }
-                else if (data.password && data.password.length > 0){
-                     toast(data.password[0],'warning')
+                else if (data.password_error && data.password_error.length > 0){
+                     toast(data.password_error,'warning')
                 }
-                else if (data.email && data.email.length > 0){
-                     toast(data.email[0],'warning')
+                else if (data.re_password_error && data.re_password_error.length > 0){
+                     toast(data.re_password_error,'warning')
                 }
-                //console.log(data)
+                console.log(data)
             })
     // }
 })
