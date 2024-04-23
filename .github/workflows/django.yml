@@ -27,6 +27,7 @@ jobs:
         pip install --upgrade pipenv
         pipenv --rm 
         pipenv install  
+        pipenv install --python 3.11
         pipenv shell
     - name: Run Tests
       run: |
