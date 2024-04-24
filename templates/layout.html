@@ -71,6 +71,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <div class="main-header-one__bottom">
         <div class="main-header-one__bottom-left d-flex">
           <div class="site-ligo d-flex align-items-center">
@@ -157,6 +158,21 @@
             </ul>
           </div>
         </div>
+=======
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item {% if request.path == '/' %}current-menu-item{% endif %}"><a href="/">Home</a></li>
+							<li class="menu-item {% if request.path == '/get-api/' %}current-menu-item{% endif %}"><a href="{% url 'get-api' %}">API</a></li>
+							<li class="menu-item {% if request.path == '/get-api/' %}current-menu-item{% endif %}"><a href="{% url 'get-api' %}">Price</a></li>
+							<li class="menu-item {% if request.path == '/contact/' %}current-menu-item{% endif %}"><a href="">Contact</a></li>
+                            <li class="menu-item {% if request.path == '/observer/' %}current-menu-item{% endif %}"><a href="{% url 'observer' %}">Become Observer</a></li>
+                            <li class="menu-item {% if request.path == '/login/' %}current-menu-item{% endif %}"><a href="{% url 'login' %}">Sign in</a></li>
+						</ul> <!-- .menu -->
+                      
+					</div> <!-- .main-navigation -->
+>>>>>>> 6f71ba48a459f42a10b86dd8fc4f08cb5060c0a1
 
         <div class="main-header-one__bottom-right">
           <div class="search-box">
