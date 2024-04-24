@@ -18,7 +18,7 @@ from django.conf import settings
 
 class ObserverRegisterationView(View):
     def get(self, request):
-        return render(request, 'observer.html')
+        return render(request, 'new/observer.html')
 
     def post(self, request):
         try:
@@ -72,7 +72,7 @@ class SubscriberRegisterationView(View):
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'login.html')
+        return render(request, 'new/login.html')
 
     def post(self, request):
         data = json.loads(request.body)

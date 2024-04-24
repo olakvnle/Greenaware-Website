@@ -18,12 +18,29 @@ class EmailValidationView(View):
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, 'new/index.html')
 
 
 class APIView(View):
     def get(self, request):
-        return render(request, 'api.html')
+        return render(request, 'new/api.html')
+    
+
+class AboutView(View):
+    def get(self, request):
+        return render(request, 'new/about.html')
+    
+class PricingView(View):
+    def get(self, request):
+        return render(request, 'new/pricing.html')
+    
+class PricingPlanView(View):
+    def get(self, request):
+        return render(request, 'new/pricing_plan.html')
+
+class ContactView(View):
+    def get(self, request):
+        return render(request, 'new/contact.html')
 
 
 class DashboardView(LoginRequiredMixin,View):
