@@ -36,7 +36,7 @@ Login.addEventListener('submit',(e)=>{
         headers: {
                  'Content-Type': 'application/json',
                  'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
-             },
+             }, s
         body: JSON.stringify({
             email,
             password,
