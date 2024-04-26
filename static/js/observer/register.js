@@ -13,8 +13,6 @@ const csrfTokenElement = document.getElementsByName('csrfmiddlewaretoken')[0]
 
 
 
-
-
 // Register
 
 Register.addEventListener('submit',(e)=>{
