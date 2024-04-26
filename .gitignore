@@ -17,3 +17,4 @@ media/
 # Django migration files
 */migrations/*.py
 */migrations/*.pyc
+db.sqlite3
