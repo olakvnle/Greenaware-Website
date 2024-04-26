@@ -1,0 +1,145 @@
+{% extends 'subscriber/layout.html'%} {% load static %} {% block content %}
+
+<div class="page-body">
+  <div class="container-xl">
+    <div class="card">
+      <div class="card-header">
+        <ul
+          class="nav nav-tabs card-header-tabs"
+          data-bs-toggle="tabs"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <a
+              href="#tabs-home-5"
+              class="nav-link"
+              data-bs-toggle="tab"
+              aria-selected="false"
+              role="tab"
+              tabindex="-1"
+              >Overview</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              href="#tabs-profile-5"
+              class="nav-link active"
+              data-bs-toggle="tab"
+              aria-selected="false"
+              role="tab"
+              tabindex="-1"
+              >API Keys</a
+            >
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <a
+              href="#tabs-activity-5"
+              class="nav-link"
+              data-bs-toggle="tab"
+              aria-selected="true"
+              role="tab"
+              >Info</a
+            >
+          </li> -->
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content">
+          <div class="tab-pane" id="tabs-home-5" role="tabpanel">
+            <h2 class="mb-1">Overview</h2>
+            <p class="mb-3">
+              Welcome to the GreenAware API! Our API allows you to access a wide
+              range of weather observation data programmatically. Whether you're
+              building a weather application, analyzing climate trends, or
+              integrating weather data into your business processes, our API
+              provides the tools you need to access accurate and up-to-date
+              weather information.
+            </p>
+            <h2 class="my-2">Getting Started</h2>
+            <p class="mb-3">
+              To start using the GreenAware API, you'll need to sign up for an
+              API key. Once you have your API key, you can make requests to our
+              API endpoints to retrieve weather data for your applications or
+              projects. Refer to our API documentation for detailed information
+              on authentication, endpoints, parameters, and response formats.
+            </p>
+            <h2 class="mt-2 mb-1">Authentication</h2>
+
+            <p class="mb-2">
+              Authentication is required for all API requests. You'll need to
+              include your API key in the request headers to authenticate your
+              requests. Visit the Authentication section of our API
+              documentation to learn more about how to authenticate your API
+              calls.
+            </p>
+          </div>
+          <div class="tab-pane active show" id="tabs-profile-5" role="tabpanel">
+            <div class="px-3">
+              <h2>API Keys</h2>
+              <div>
+                Fringilla egestas nunc quis tellus diam rhoncus ultricies
+                tristique enim at diam, sem nunc amet, pellentesque id egestas
+                velit sed
+              </div>
+            </div>
+            <div class="mt-4">
+              <div class="card">
+                <div class="mt-2 mb-3 p-3">
+                  <h2 class="mb-1">Access Keys</h2>
+                  <div>
+                    Create an API key that unclockls full access, enabling you
+                    to harness the full power of Greenaware weather
+                    observations.
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-vcenter card-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Token</th>
+                        <th>Date Created</th>
+                        <th>Las Used</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="">
+                        <td>Publishable key</td>
+                        <td class="text-secondary">
+                          pk_test_1234567890abcdefghijklmnopqrstuvwxyz
+                        </td>
+                        <td class="text-secondary">
+                          <a href="#" class="text-reset">January 1, 2023</a>
+                        </td>
+                        <td class="text-secondary">March 15, 2023</td>
+                      </tr>
+                      <tr class="">
+                        <td>Secret key</td>
+                        <td class="text-secondary">
+                          sk_test_abcdefghijklmnopqrstuvwxyz1234567890
+                        </td>
+                        <td class="text-secondary">
+                          <a href="#" class="text-reset"> February 1, 2023</a>
+                        </td>
+                        <td class="text-secondary">March 15, 2023</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tabs-activity-5" role="tabpanel">
+            <h2>Info</h2>
+            <div>
+              Donec ac vitae diam amet vel leo egestas consequat rhoncus in
+              luctus amet, facilisi sit mauris accumsan nibh habitant senectus
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

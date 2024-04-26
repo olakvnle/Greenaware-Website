@@ -77,3 +77,12 @@ class ObservationView(View):
 class UserView(View):
     def get(self, request):
         return render(request, 'observer/user.html')
+
+
+class SubscriberDashboardView(View):
+    def get(self, request):
+        return render(request, 'subscriber/dashboard.html')
+    
+class SubscriberAPIView(View):
+    def get(self, request):
+        return render(request, 'subscriber/api_access.html')

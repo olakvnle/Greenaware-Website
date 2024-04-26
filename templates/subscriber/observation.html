@@ -1,40 +1,40 @@
-{% extends 'observer/layout.html'%}
-{% load static %}
-{% block  content %}
+{% extends 'subscriber/layout.html'%} {% load static %} {% block content %}
 
 <div class="page-body">
-          <div class="container-xl">
-            <div class="row row-cards">
-              <div class="col-12">
-                <form action="" method="post" class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Observation data</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-5">
-                      <div class="col-xl-4">
-                        <div class="row">
-                          <div class="col-md-6 col-xl-6">
-                            
-                            <div class="mb-3">
-                              <label class="form-label">Temperature</label>
-                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Password</label>
-                              <input type="text" class="form-control" name="" />
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
+  <div class="container-xl">
+    <div class="row row-cards">
+      <div class="col-12">
+        <form action="" method="post" class="card">
+          <div class="card-header">
+            <h4 class="card-title">Observation data</h4>
+          </div>
+          <div class="card-body">
+            <div class="row g-5">
+              <div class="col-xl-4">
+                <div class="row">
+                  <div class="col-md-6 col-xl-6">
+                    <div class="mb-3">
+                      <label class="form-label">Temperature</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="example-text-input"
+                        placeholder="Input placeholder"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Password</label>
+                      <input type="text" class="form-control" name="" />
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    
-
-{% endblock content%}
+  {% endblock content%}
+</div>
