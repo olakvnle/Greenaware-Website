@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
@@ -57,6 +59,15 @@ class DashboardView(LoginRequiredMixin,View):
         return render(request, 'observer/dashboard.html', context)
 
 
+class ObservationRecordView(LoginRequiredMixin,View):
+
+    def get(self, request):
+
+        context = {
+            'page_name': 'Dashboard'
+        }
+        return render(request, 'observer/view_observation.html', context)
+
 
 class CourseView(View):
     def get(self, request):
@@ -72,6 +83,13 @@ class ObservationView(View):
             'page_name': 'Observation'
         }
         return render(request, 'observer/observation.html', context)
+
+    @csrf_exemple
+    def post(self, request):
+        data = json.loads(request.body)
+        email = data['email']
+
+
 
 
 class UserView(View):
