@@ -18,12 +18,16 @@ class EmailValidationView(View):
 
 class IndexView(View):
     def get(self, request):
+        context={}
         return render(request, 'new/index.html')
 
 
 class APIView(View):
     def get(self, request):
-        return render(request, 'new/api.html')
+        context = {
+            'type': 'subscriber'
+        }
+        return render(request, 'new/api.html',context)
     
 
 class AboutView(View):
@@ -73,3 +77,12 @@ class ObservationView(View):
 class UserView(View):
     def get(self, request):
         return render(request, 'observer/user.html')
+
+
+class SubscriberDashboardView(View):
+    def get(self, request):
+        return render(request, 'subscriber/dashboard.html')
+    
+class SubscriberAPIView(View):
+    def get(self, request):
+        return render(request, 'subscriber/api_access.html')

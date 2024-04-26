@@ -45,7 +45,7 @@ Register.addEventListener('submit',(e)=>{
 
 
     // if (email.value.length > 0) {
-        fetch('/observer/', {
+        fetch('/register/', {
              method: 'POST',
              headers: {
                  'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ from .views import ActivateObserverView
 from users.views import ( LogoutView,LoginView,ObserverRegisterationView,SubscriberRegisterationView)
 
 urlpatterns = [
-    path('observer/', ObserverRegisterationView.as_view(), name='observer'),
+    path('register/', ObserverRegisterationView.as_view(), name='register'),
     path('register-subscriber/', SubscriberRegisterationView.as_view(), name='register-subscriber'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
