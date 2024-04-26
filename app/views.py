@@ -84,10 +84,11 @@ class ObservationView(View):
         }
         return render(request, 'observer/observation.html', context)
 
-    @csrf_exemple
+
     def post(self, request):
         data = json.loads(request.body)
         email = data['email']
+        return JsonResponse({'email_valid': True})
 
 
 
