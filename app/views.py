@@ -18,12 +18,16 @@ class EmailValidationView(View):
 
 class IndexView(View):
     def get(self, request):
+        context={}
         return render(request, 'new/index.html')
 
 
 class APIView(View):
     def get(self, request):
-        return render(request, 'new/api.html')
+        context = {
+            'type': 'subscriber'
+        }
+        return render(request, 'new/api.html',context)
     
 
 class AboutView(View):

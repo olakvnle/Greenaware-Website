@@ -62,7 +62,7 @@ Login.addEventListener('submit',(e)=>{
     .catch((error) => {
         // Handle errors, such as network errors or server errors
         console.error('Error:', error);
-        toast('No active account found with the given credentials');
+        toast('No active account found with the given credentials. ');
     });
 });
 
