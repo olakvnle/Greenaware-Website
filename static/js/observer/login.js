@@ -23,6 +23,16 @@ Login.addEventListener("submit", (e) => {
     return;
   }
 
+  // Basic validation for email and password fields
+  if (!email) {
+    toast("Email address field may not be blank", "warning");
+    return;
+  }
+  if (!password) {
+    toast("Password field may not be blank", "warning");
+    return;
+  }
+
   // Make a POST request to the login endpoint
   fetch("/login/", {
     method: "POST",

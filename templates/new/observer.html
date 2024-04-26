@@ -8,17 +8,17 @@
         <h2 class="sec-title">Register</h2>
         {% include 'partials/messages.html' %}
 
-        <form method="post" class="itco-cform login">
+        <form method="post" class="itco-cform register_observer">
           {% csrf_token %}
 
           <div class="row">
             <div class="col-sm-6">
               <div class="contact-field">
-                <label html-for="first-name">First Name</label>
+                <label html-for="first_name">First Name</label>
                 <input
                   type="text"
-                  id="first-name"
-                  name="first-name"
+                  id="first_name"
+                  name="first_name"
                   placeholder="Input your first name"
                 />
               </div>
@@ -26,11 +26,11 @@
 
             <div class="col-sm-6">
               <div class="contact-field">
-                <label html-for="last-name">Last Name</label>
+                <label html-for="last_name">Last Name</label>
                 <input
                   type="text"
-                  id="last-name"
-                  name="last-name"
+                  id="last_name"
+                  name="last_name"
                   placeholder="Input your last name"
                 />
               </div>
@@ -64,9 +64,9 @@
               <div class="contact-field">
                 <label html-for="confirm-password">Confirm Password</label>
                 <input
-                  type="confirm-password"
-                  id="confirm-password"
-                  name="confirm-password"
+                  type="re_password"
+                  id="re_password"
+                  name="re_password"
                   placeholder="*******"
                 />
               </div>
@@ -94,5 +94,5 @@
     </div>
   </div>
 </section>
-
+ <script src="{% static 'js/observer/register.js'%}" ></script>
 {% endblock content %}

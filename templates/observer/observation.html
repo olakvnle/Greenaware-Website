@@ -1,40 +1,160 @@
-{% extends 'observer/layout.html'%}
-{% load static %}
-{% block  content %}
+{% extends 'observer/layout.html'%} {% load static %} {% block content %}
 
 <div class="page-body">
-          <div class="container-xl">
-            <div class="row row-cards">
-              <div class="col-12">
-                <form action="" method="post" class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Observation data</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-5">
-                      <div class="col-xl-4">
-                        <div class="row">
-                          <div class="col-md-6 col-xl-6">
-                            
-                            <div class="mb-3">
-                              <label class="form-label">Temperature</label>
-                              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder">
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">Password</label>
-                              <input type="text" class="form-control" name="" />
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
+  <div class="container-xl">
+    <div class="row row-cards">
+      <div class="col-12">
+        <form action="" method="post" class="card">
+          <div class="card-header">
+            <h4 class="card-title">Observation data</h4>
+          </div>
+          <div class="card-body">
+            <div class="row g-5">
+              <div class="col-xl-12">
+                <div class="row">
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Date</label>
+                      <input
+                        type="date"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="Input placeholder"
+                      />
                     </div>
                   </div>
-                </form>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Time</label>
+                      <input
+                        type="time"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="Input placeholder"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Time Zone</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="America/Sao_Paulo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Location</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="What3Words location"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label"
+                        >Temprature (Land Surface)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="8°C"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Temprature (Sea Surface)</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="10°C"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Humidity</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="5g/kg"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Wind Speed</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="5km/h"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Wind Direction</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="23.43,43.875"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Precipitation</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="35mm"
+                        placeholder="23.43,43.875"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xl-4">
+                    <div class="mb-3">
+                      <label class="form-label">Haze</label>
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="29%"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xl-12">
+                    <div class="mb-3">
+                      <label class="form-label">Notes</label>
+                      <textarea
+                        type="text"
+                        class="form-control shadow-none"
+                        name="example-text-input"
+                        placeholder="Brief description/summary of weather details"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    
-
-{% endblock content%}
+  {% endblock content%}
+</div>
