@@ -1,0 +1,83 @@
+ {% include 'partials/messages.html' %}
+
+        <form method="post" class="itco-cform register_observer">
+          {% csrf_token %}
+            <input type="hidden" name="register-type" value="{{ type }}" id="register-type" />
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="contact-field">
+                <label html-for="first_name">First Name</label>
+                <input
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  placeholder="Input your first name"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="contact-field">
+                <label html-for="last_name">Last Name</label>
+                <input
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  placeholder="Input your last name"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="contact-field">
+                <label html-for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Input your email"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="contact-field">
+                <label html-for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="*******"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="contact-field">
+                <label html-for="confirm-password">Confirm Password</label>
+                <input
+                  type="password"
+                  id="re_password"
+                  name="re_password"
+                  placeholder="*******"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="itco-form-btn">
+                <button class="thm-btn mt-3" type="submit">
+                  <span class="txt">Signup</span>
+                </button>
+              </div>
+            </div>
+            <div class="pt-4">
+              <p>
+                <small>
+                  Already have an account?
+                  <a href="{% url 'login' %}"> Login</a>
+                </small>
+              </p>
+            </div>
+          </div>
+        </form>

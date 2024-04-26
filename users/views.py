@@ -18,7 +18,9 @@ from django.conf import settings
 
 class ObserverRegisterationView(View):
     def get(self, request):
-        return render(request, 'new/observer.html')
+        ty = request.GET.get('ty', None)
+        context = {'type':ty}
+        return render(request, 'new/observer.html',context)
 
     def post(self, request):
         try:

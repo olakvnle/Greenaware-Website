@@ -103,26 +103,33 @@
                 <h3 class="card-title">Last updates</h3>
               </div>
               <div class="list-group list-group-flush list-group-hoverable">
+                {#
                 <div class="list-group-item">
+                  #} {#
                   <div class="row align-items-center">
+                    #} {#
                     <div class="col-auto">
                       <span
                         class="status-dot status-dot-animated bg-red d-block"
                       ></span>
                     </div>
-
+                    #} {#
                     <div class="col text-truncate">
-                      <a href="#" class="text-body d-block">Example 1</a>
+                      #} {#
+                      <a href="#" class="text-body d-block">Example 1</a>#} {#
                       <div class="d-block text-secondary text-truncate mt-n1">
-                        Change deprecated html tags to text decoration classes
-                        (#29604)
+                        #} {# Change deprecated html tags to text decoration
+                        classes (#29604)#} {#
                       </div>
+                      #} {#
                     </div>
-
+                    #} {#
                     <div class="col-auto">
-                      <a href="#" class="list-group-item-actions">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-
+                      #} {#
+                      <a href="#" class="list-group-item-actions"
+                        >#} {#
+                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->#}
+                        {#
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="icon text-muted"
@@ -138,12 +145,15 @@
                           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                           <path
                             d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
-                          />
-                        </svg>
-                      </a>
+                          /></svg
+                        >#} {# </a
+                      >#} {#
                     </div>
+                    #} {#
                   </div>
+                  #} {#
                 </div>
+                #}
               </div>
             </div>
           </div>
@@ -166,7 +176,7 @@
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-          <a href="#" class="dropdown-item">Status</a>
+          {# <a href="#" class="dropdown-item">Status</a>#}
           <a href="" class="dropdown-item">Profile</a>
           <div class="dropdown-divider"></div>
           <a href="{% url 'users' %}" class="dropdown-item">Settings</a>
@@ -179,11 +189,15 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-menu">
       <div>
+        {#
         <form action="./" method="get" autocomplete="off" novalidate>
+          #} {#
           <div class="input-icon">
-            <span class="input-icon-addon">
-              <!-- Download SVG icon from http://tabler-icons.io/i/search -->
-
+            #} {#
+            <span class="input-icon-addon"
+              >#} {#
+              <!-- Download SVG icon from http://tabler-icons.io/i/search -->#}
+              {#
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon"
@@ -198,20 +212,22 @@
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                <path d="M21 21l-6 -6" />
-              </svg>
-            </span>
-
+                <path d="M21 21l-6 -6" /></svg
+              >#} {# </span
+            >#} {#
             <input
               type="text"
               value=""
               class="form-control"
               placeholder="Search…"
               aria-label="Search in website"
-            />
+            />#} {#
           </div>
+          #} {#
         </form>
+        #} {#
       </div>
+      #}
     </div>
   </div>
 </header>
