@@ -1,6 +1,6 @@
 'use strict'
 
-const Base_URL = 'http://127.0.0.1:8090/';
+
 
 const emailField = document.querySelector('#email');
 const passwordField = document.querySelector('#password');
@@ -31,12 +31,12 @@ Login.addEventListener('submit',(e)=>{
     }
 
     // Make a POST request to the login endpoint
-    fetch(Base_URL + 'login/', {
+    fetch('/login/', {
         method: 'POST',
         headers: {
                  'Content-Type': 'application/json',
                  'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
-             },
+             }, s
         body: JSON.stringify({
             email,
             password,
