@@ -1,6 +1,6 @@
 'use strict'
 
-const Base_url = 'http://127.0.0.1:8090/';
+
 
 const email = document.querySelector('#email');
 const first_name = document.querySelector('#first_name');
@@ -47,7 +47,7 @@ Register.addEventListener('submit',(e)=>{
 
 
     // if (email.value.length > 0) {
-        fetch(Base_url+'observer/', {
+        fetch('/observer/', {
              method: 'POST',
              headers: {
                  'Content-Type': 'application/json',
