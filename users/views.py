@@ -1,5 +1,5 @@
 from django.core.mail import EmailMessage, get_connection
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from users.models import UserAccount as User
@@ -87,10 +87,10 @@ class LoginView(View):
                 auth.login(request, user)
                 url = '/observer/dashboard' if user.is_observer else '/subscriber/dashboard'
                 return JsonResponse({'msg': url})
-
-            return JsonResponse({'activate_error': 'Account is not Activated'}, status=400)
-
-        return JsonResponse({'error': 'This credential is not valid'}, status=400)
+            else:
+                return JsonResponse({'activate_error': 'Account is not Activated'}, status=400)
+        else:
+            return JsonResponse({'error': 'This credential is not valid'}, status=400)
 
 
 class LogoutView(View):
@@ -109,7 +109,7 @@ class ActivateObserverView(View):
             token = account_activation_token.check_token(user, token)
 
             if not token:
-                messages.info(request, 'Account has already been Activation successful.')
+                messages.info(request, 'Account Activation Successful.')
                 return HttpResponseRedirect('/login')
 
             if user.is_active:
