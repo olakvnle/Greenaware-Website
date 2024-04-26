@@ -15,4 +15,4 @@ urlpatterns = [
     path('observation/', ObservationView.as_view(), name='observation'),
     path('courses/', CourseView.as_view(), name='courses'),
     path('users/profiles/', UserView.as_view(), name='users')
-] 
+    ] 
