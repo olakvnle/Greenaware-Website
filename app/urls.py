@@ -2,6 +2,7 @@
 from django.urls import path
 
 from app.views import (IndexView, APIView,DashboardView,ObservationView,ObservationRecordView,
+                       SubscriberAPIView,SubscriberDashboardView,
                        CourseView,UserView, AboutView, PricingView, PricingPlanView, ContactView)
 
 urlpatterns = [
@@ -15,6 +16,8 @@ urlpatterns = [
     path('observer/dashboard/', DashboardView.as_view(), name='dashboard'),
     path('observation/create/', ObservationView.as_view(), name='observation'),
     path('observation/view/', ObservationRecordView.as_view(), name='observation_data'),
+    path('subscriber/dashboard/', SubscriberDashboardView.as_view(), name='dashboard'),
+    path('subscriber/api_access/', SubscriberAPIView.as_view(), name='api_access')
     path('courses/', CourseView.as_view(), name='courses'),
     path('users/profiles/', UserView.as_view(), name='users')
 ] 
