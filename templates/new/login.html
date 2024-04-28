@@ -10,7 +10,7 @@
 
         <form method="post" class="itco-cform login">
           {% csrf_token %}
-
+   
           <div class="row">
             <div class="col-sm-12">
               <div class="contact-field">
@@ -47,7 +47,7 @@
               <p>
                 <small>
                   Want to be an observer!
-                  <a href="{% url 'register' %}"> Register</a>
+                  <a href="{% url 'register' %}?t=obs "> Register</a>
                 </small>
               </p>
             </div>

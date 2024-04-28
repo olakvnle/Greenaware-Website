@@ -36,7 +36,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_observer = models.BooleanField(default=True)
+    is_observer = models.BooleanField(default=False)
     take_online_course = models.BooleanField(default=False)
 
     objects = UserAccountManager()
