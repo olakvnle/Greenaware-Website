@@ -8,6 +8,7 @@ const last_name = document.querySelector('#last_name');
 const password = document.querySelector('#password');
 const re_password = document.querySelector('#re_password');
 const Register = document.querySelector('.register_observer');
+const type = document.querySelector('#register-type');
 const csrfTokenElement = document.getElementsByName('csrfmiddlewaretoken')[0]
 
 
@@ -56,7 +57,8 @@ Register.addEventListener('submit',(e)=>{
                 'first_name': first_name.value,
                 'last_name': last_name.value,
                 'password': password.value,
-                're_password': re_password.value
+                're_password': re_password.value,
+                'type':type.value,
             }),
 
         })
@@ -73,7 +75,7 @@ Register.addEventListener('submit',(e)=>{
                 else if (data.re_password_error && data.re_password_error.length > 0){
                      toast(data.re_password_error,'warning')
                 }
-                console.log(data)
+                //console.log(data)
             })
     // }
 })

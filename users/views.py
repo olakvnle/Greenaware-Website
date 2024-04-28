@@ -18,9 +18,9 @@ from django.conf import settings
 
 class ObserverRegisterationView(View):
     def get(self, request):
-        ty = request.GET.get('ty', None)
-        context = {'type':ty}
-        return render(request, 'new/observer.html',context)
+        ty = request.GET.get('t', None)
+        context = {'type': ty}
+        return render(request, 'new/observer.html', context)
 
     def post(self, request):
         try:
@@ -30,6 +30,7 @@ class ObserverRegisterationView(View):
             last_name = data['last_name']
             password = data['password']
             re_password = data['re_password']
+            type = data['type']
 
             if User.objects.filter(email=email).exists():
                 return JsonResponse({'email_error': 'Email already registered'}, status=400)
@@ -43,7 +44,8 @@ class ObserverRegisterationView(View):
             user = User.objects.create_user(email=email, first_name=first_name, last_name=last_name)
             user.set_password(password)
             user.is_active = False
-            user.is_observer = True
+            if type == 'obs':
+                user.is_observer = True
             user.save()
 
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
@@ -74,7 +76,9 @@ class SubscriberRegisterationView(View):
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'new/login.html')
+        ty = request.GET.get('t', None)
+        context = {'type': ty}
+        return render(request, 'new/login.html', context)
 
     def post(self, request):
         data = json.loads(request.body)
