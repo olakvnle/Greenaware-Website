@@ -64,7 +64,7 @@ class ObservationRecordView(LoginRequiredMixin,View):
     def get(self, request):
 
         context = {
-            'page_name': 'Dashboard'
+            'page_name': 'Observation'
         }
         return render(request, 'observer/view_observation.html', context)
 
