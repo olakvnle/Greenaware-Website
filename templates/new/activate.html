@@ -1,0 +1,51 @@
+{% extends 'new/layout.html'%} {% load static %} {% block content %}
+
+<section
+  id="site-breadcumb"
+  style="background-image: url('assets/images/breadcumb/breadcumb-bd.svg')"
+>
+  <div class="site-breadcumb-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="breadcumb-content">
+            <h1 class="breadcumb-title"> Activate your Account</h1>
+            <ul class="page-navigator">
+              <li class="home"><a href="/">Home</a></li>
+              <li class="current-page"><a href="#">Activate</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End section -->
+<section class="blog-page-sec sec-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="blog-item-wrapper">
+          <div
+            class="blog-left-box blog-item wow fadeInUp"
+            data-wow-delay="0.5s"
+            data-wow-duration="1500ms"
+          >
+              
+              <input type="hidden" id="uid" value="{{ uid }} " />
+               <input type="hidden" id="token" value="{{ token }}" />
+            <!-- blog item 1 -->
+<button type="button" class="thm-btn">
+                  <span class="txt activate_account">Activate</span>
+                </button>
+            
+            
+    </div>
+  </div>
+</section>
+<!-- newslatter section start -->
+
+<!-- newslatter section end -->
+ <script src="{% static 'js/observer/activate.js'%}" ></script>
+
+{% endblock content %}

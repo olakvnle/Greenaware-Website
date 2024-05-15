@@ -14,13 +14,13 @@ from django.urls import reverse
 from .util import account_activation_token
 import requests
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 
 class ObserverRegisterationView(View):
     def get(self, request):
-        ty = request.GET.get('t', None)
-        context = {'type': ty}
-        return render(request, 'new/observer.html', context)
+
+        return render(request, 'new/observer.html')
 
     def post(self, request):
         try:
@@ -30,7 +30,7 @@ class ObserverRegisterationView(View):
             last_name = data['last_name']
             password = data['password']
             re_password = data['re_password']
-            type = data['type']
+            register_type = data['type']
 
             if User.objects.filter(email=email).exists():
                 return JsonResponse({'email_error': 'Email already registered'}, status=400)
@@ -43,14 +43,15 @@ class ObserverRegisterationView(View):
 
             user = User.objects.create_user(email=email, first_name=first_name, last_name=last_name)
             user.set_password(password)
-            user.is_active = False
-            if type == 'obs':
+            if register_type == 'observer':
                 user.is_observer = True
+            user.is_active = False
             user.save()
 
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
             domain = get_current_site(request).domain
-            link = reverse('activate', kwargs={'uidb64': uidb64, 'token': account_activation_token.make_token(user)})
+            link = reverse('activation',
+                           kwargs={'uidb64': uidb64, 'token': account_activation_token.make_token(user)})
             activate_url = 'http://' + domain + link
 
             email_subject = 'Activate your account'
@@ -64,37 +65,27 @@ class ObserverRegisterationView(View):
             return JsonResponse({'error': str(e)}, status=500)
 
 
-class SubscriberRegisterationView(View):
-    def post(self, request):
-        data = json.loads(request.body)
-        username = data['username']
-        email = data['email']
-        password = data['password']
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Username already taken')
-
-
 class LoginView(View):
     def get(self, request):
-        ty = request.GET.get('t', None)
-        context = {'type': ty}
-        return render(request, 'new/login.html', context)
+        return render(request, 'new/login.html')
 
     def post(self, request):
+
         data = json.loads(request.body)
         email = data['email']
         password = data['password']
 
         if email and password:
             user = auth.authenticate(email=email, password=password)
-            if user.is_active:
-                auth.login(request, user)
-                url = '/observer/dashboard' if user.is_observer else '/subscriber/dashboard'
-                return JsonResponse({'msg': url})
+            if user is not None:
+                if user.is_active:
+                    auth.login(request, user)
+                    url = '/observer/dashboard' if user.is_observer else '/subscriber/dashboard'
+                    return JsonResponse({'msg': url})
+                else:
+                    return JsonResponse({'activate_error': 'Account is not Activated'}, status=400)
             else:
-                return JsonResponse({'activate_error': 'Account is not Activated'}, status=400)
-        else:
-            return JsonResponse({'error': 'This credential is not valid'}, status=400)
+                return JsonResponse({'error': 'This credential is not valid'}, status=400)
 
 
 class LogoutView(View):
@@ -104,8 +95,9 @@ class LogoutView(View):
         return redirect('login')
 
 
-class ActivateObserverView(View):
+class ActivateUserView(View):
     def get(self, request, uidb64, token):
+
         try:
 
             id = force_str(urlsafe_base64_decode(uidb64))
@@ -128,84 +120,31 @@ class ActivateObserverView(View):
 
         return redirect('login')
 
-    # def get(self, request, uid, token):
-    #     activation_url = f'http://127.0.0.1:8090/api/users/activation/'
-    #
-    #     response = requests.post(
-    #         activation_url,
-    #         json={'uid': uid, 'token': token},
-    #         timeout=5,
-    #         verify=False,  # Disable SSL verification (only for development/testing)
-    #         headers={'Content-Type': 'application/json'}
-    #     )
-    #     if response.status_code == 204:
-    #         messages.success(request, 'Activation successful.')
-    #         return HttpResponseRedirect('/observer/login')
-    #
-    #     if 'detail' in response.json():
-    #         messages.info(request, 'Account has already been Activation successful.')
-    #         return HttpResponseRedirect('/observer/login')
-    #     elif 'token' in response.json():
-    #         return HttpResponseRedirect('/resend-activation')
-    #     elif 'uid' in response.json():
-    #         return HttpResponseRedirect('/resend-activation')
 
-# def register(request, register_url):
-#     # Get User data
-#     email = request.POST['email']
-#     first_name = request.POST['first_name']
-#     last_name = request.POST['last_name']
-#     password = request.POST['password']
-#     re_password = request.POST['re_password']
-#
-#     context = {'fieldValues': request.POST}
-#
-#     # Validate and Save User
-#     if not User.objects.filter(email=email).exists():
-#         if len(password) < 8:
-#             messages.error(request, 'Password must be at least 8 characters')
-#             return render(request, 'auth/register.html', context)
-#         if not User.objects.filter(email=email).exists():
-#             if len(password) < 6:
-#                 messages.error(request, 'Password is too short')
-#                 return render(request, 'auth/register.html', context)
-#             user = User.objects.create_user(username=username, email=email)
-#             user.set_password(password)
-#             user.is_active = False
-#             user.save()
-#
-#             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-#             domain = get_current_site(request).domain
-#             link = reverse('activate', kwargs={
-#                 'uidb64': uidb64,
-#                 'token': account_activation_token.make_token(user)
-#             })
-#
-#             activate_url = 'http://' + domain + link
-#
-#             email_subject = 'Activate your account'
-#             email_body = 'Hi Welcome ' + user.username + \
-#                          'Please use this link to activate your account\n ' + activate_url
-#             email = EmailMessage(
-#                 email_subject,
-#                 email_body,
-#                 'admin@rashkemsoft.com.ng',
-#                 [email],
-#             )
-#
-#             try:
-#                 # Send the email
-#                 email.send(fail_silently=False)
-#                 messages.success(request, 'Account created successfully')
-#
-#             except Exception as e:
-#
-#                 # Handle any exceptions, log the error, or perform appropriate actions
-#                 messages.error(request, e)
-#             # finally:
-#             #     # Close the connection after sending the email, whether successful or not
-#             #     connection.close()
-#
-#             return render(request, 'auth/register.html')
-#
-#     return render(request, 'auth/register.html')
+class ActivateObserverView(View):
+    def get(self, request, uid, token):
+        context = {'uid': uid, 'token': token}
+        return render(request, 'new/activate.html', context)
+
+
+@csrf_exempt
+def store_tokens(request):
+    if request.method == 'POST':
+        try:
+            # Extract tokens from request body
+            data = json.loads(request.body)
+            access_token = data.get('access')
+            refresh_token = data.get('refresh')
+            # Store tokens in session and cookie
+            request.session['jwt_access_token'] = access_token
+            request.session['jwt_refresh_token'] = refresh_token
+            response = JsonResponse({'message': 'Tokens stored successfully'})
+            response.set_cookie('jwt_access_token', access_token, httponly=True, secure=True)
+            response.set_cookie('jwt_refresh_token', refresh_token, httponly=True, secure=True)
+            return response  # Return the response object
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
