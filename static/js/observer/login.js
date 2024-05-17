@@ -66,9 +66,10 @@ function generateToken(email, password,uri){
                      auth(data.access, data.refresh,uri)
                      //window.location.href = '/observer/dashboard';
 
-                 } else {
-                     console.log(data)
+                 } else if (data.password) {
+                     toast(data.password, 'warning');
                  }
+                 console.log(data)
           })
 }
 
@@ -93,7 +94,7 @@ function auth(access,refresh,url=''){
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        // 'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
+         'X-CSRFToken': csrfTokenElement.value // Include CSRF token if CSRF protection is enabled
     },
     body: JSON.stringify({
         'access':access,

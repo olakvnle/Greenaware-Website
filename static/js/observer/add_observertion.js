@@ -21,7 +21,6 @@ const notes = document.querySelector('#notes');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-
      check_token();
 
     const formData = {
@@ -38,7 +37,6 @@ form.addEventListener('submit', (e) => {
     "haze": haze.value,
     "notes": notes.textContent
 };
-
 
     const jwtToken=localStorage.getItem('access')
     fetch(apiURL + 'observations/', {

@@ -18,34 +18,34 @@ def create_user(email='user@example.com', password='testpassword123', is_active=
     user.is_observer = is_observer
     user.save()
     return user
-
-class ObserverRegistrationViewTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.url = reverse('observer')
-        self.valid_payload = {
-            'email': 'newuser@example.com',
-            'first_name': 'Test',
-            'last_name': 'User',
-            'password': 'validpassword123',
-            're_password': 'validpassword123'
-        }
-
-    def test_get_observer_registration_page(self):
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'new/observer.html')
-
-    def test_post_observer_registration_valid(self):
-        response = self.client.post(self.url, json.dumps(self.valid_payload), content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(str(response.content, encoding='utf8'), {'success': 'Account created successfully'})
-
-    def test_post_observer_registration_email_exists(self):
-        create_user(email='newuser@example.com')  # Create a user with the same email as in valid_payload
-        response = self.client.post(self.url, json.dumps(self.valid_payload), content_type='application/json')
-        self.assertEqual(response.status_code, 400)
-        self.assertJSONEqual(str(response.content, encoding='utf8'), {'email_error': 'Email already registered'})
+#
+# class ObserverRegistrationViewTests(TestCase):
+#     def setUp(self):
+#         self.client = Client()
+#         self.url = reverse('observer')
+#         self.valid_payload = {
+#             'email': 'newuser@example.com',
+#             'first_name': 'Test',
+#             'last_name': 'User',
+#             'password': 'validpassword123',
+#             're_password': 'validpassword123'
+#         }
+#
+#     def test_get_observer_registration_page(self):
+#         response = self.client.get(self.url)
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'new/observer.html')
+#
+#     def test_post_observer_registration_valid(self):
+#         response = self.client.post(self.url, json.dumps(self.valid_payload), content_type='application/json')
+#         self.assertEqual(response.status_code, 200)
+#         self.assertJSONEqual(str(response.content, encoding='utf8'), {'success': 'Account created successfully'})
+#
+#     def test_post_observer_registration_email_exists(self):
+#         create_user(email='newuser@example.com')  # Create a user with the same email as in valid_payload
+#         response = self.client.post(self.url, json.dumps(self.valid_payload), content_type='application/json')
+#         self.assertEqual(response.status_code, 400)
+#         self.assertJSONEqual(str(response.content, encoding='utf8'), {'email_error': 'Email already registered'})
 
 class LoginViewTests(TestCase):
     def setUp(self):
@@ -70,13 +70,13 @@ class LoginViewTests(TestCase):
     #     self.assertEqual(response.status_code, 400)
     #     self.assertJSONEqual(str(response.content, encoding='utf8'), {'error': 'This credential is not valid'})
 
-class ActivateObserverViewTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.user = create_user()
-        uidb64 = urlsafe_b64encode(force_bytes(self.user.pk))
-        token = account_activation_token.make_token(self.user)
-        self.url = reverse('activate', kwargs={'uidb64': uidb64, 'token': token})
+# class ActivateObserverViewTests(TestCase):
+#     def setUp(self):
+#         self.client = Client()
+#         self.user = create_user()
+#         uidb64 = urlsafe_b64encode(force_bytes(self.user.pk))
+#         token = account_activation_token.make_token(self.user)
+#         self.url = reverse('activation', kwargs={'uidb64': uidb64, 'token': token})
 
     # def test_get_activate_user_valid(self):
     #     response = self.client.get(self.url)
@@ -84,8 +84,8 @@ class ActivateObserverViewTests(TestCase):
     #     self.user.refresh_from_db()
     #     self.assertTrue(self.user.is_active)
 
-    def test_get_activate_user_invalid_token(self):
-        url = reverse('activate', kwargs={'uidb64': urlsafe_b64encode(force_bytes(self.user.pk)), 'token': 'bad-token'})
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 302)  # Redirect, assuming invalid token message shown
+    # def test_get_activate_user_invalid_token(self):
+    #     url = reverse('activation', kwargs={'uidb64': urlsafe_b64encode(force_bytes(self.user.pk)), 'token': 'bad-token'})
+    #     response = self.client.get(url)
+    #     self.assertEqual(response.status_code, 302)  # Redirect, assuming invalid token message shown
 

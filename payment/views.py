@@ -15,13 +15,14 @@ class PaymentView(LoginRequiredMixin, View):
 
     def post(self, request):
         try:
+            price =49
             # Token is created using Stripe.js or Checkout!
             # Get the payment token ID submitted by the form:
             token = request.POST['stripeToken']
 
             # Create a charge: this will charge the user's card
             charge = stripe.Charge.create(
-                amount=1000,  # Amount in cents
+                amount=price * 100,
                 currency='usd',
                 description='Example charge',
                 source=token,
