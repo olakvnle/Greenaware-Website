@@ -78,9 +78,7 @@
               <h2>API Keys</h2>
                 <button class="btn btn-primary generate_api_key">Generate API key</button>
               <div>
-                Fringilla egestas nunc quis tellus diam rhoncus ultricies
-                tristique enim at diam, sem nunc amet, pellentesque id egestas
-                velit sed
+              
               </div>
             </div>
             <div class="mt-4">
@@ -104,25 +102,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="">
-                        <td>Publishable key</td>
-                        <td class="text-secondary">
-                          pk_test_1234567890abcdefghijklmnopqrstuvwxyz
-                        </td>
-                        <td class="text-secondary">
-                          <a href="#" class="text-reset">January 1, 2023</a>
-                        </td>
-                        <td class="text-secondary">March 15, 2023</td>
-                      </tr>
+                      
                       <tr class="">
                         <td>Secret key</td>
-                        <td class="text-secondary">
-                          sk_test_abcdefghijklmnopqrstuvwxyz1234567890
+                        <td class="text-secondary api-key">
+                         
                         </td>
                         <td class="text-secondary">
-                          <a href="#" class="text-reset"> February 1, 2023</a>
+                          <a href="#" class="text-reset created-date"></a>
                         </td>
-                        <td class="text-secondary">March 15, 2023</td>
+                        <td class="text-secondary used-date"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -142,5 +131,5 @@
     </div>
   </div>
 </div>
-
+    <script src="{% static 'js/get-key.js'%}" ></script>
 {% endblock content%}
