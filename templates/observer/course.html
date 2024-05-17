@@ -4,40 +4,44 @@
 
 <div class="page-body">
           <div class="container-xl">
+                {% include 'partials/messages.html' %}
             <div class="row row-cards">
-              <div class="col-sm-6 col-lg-4">
+              <div class="col-sm-6 col-lg-6">
                 <div class="card card-sm">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/sht6td5LmyA" frameborder="0" allowfullscreen></iframe>
 
                 </div>
               </div>
-              <div class="col-sm-6 col-lg-4">
-                <div class="card card-sm">
-                <iframe width="560" height="315" src="https://www.youtube.com/watch?v=rn7CvtDPbkw" frameborder="0" allowfullscreen></iframe>                  
-                </div>
-              </div>
+{#              <div class="col-sm-6 col-lg-4">#}
+{#                <div class="card card-sm">#}
+{#                <iframe width="560" height="315" src="https://www.youtube.com/watch?v=rn7CvtDPbkw" frameborder="0" allowfullscreen></iframe>                  #}
+{#                </div>#}
+{#              </div>#}
                 
-                <div class="col-sm-6 col-lg-4">
-                <div class="card card-sm">
+{#                <div class="col-sm-6 col-lg-4">#}
+{#                <div class="card card-sm">#}
 {#                <iframe width="560" height="315" src="https://www.youtube.com/watch?v=wMJmUAOpsg8" frameborder="0" allowfullscreen></iframe>                  #}
-                  
-                </div>
-              </div>
+{#                  #}
+{#                </div>#}
+{#              </div>#}
             </div>
               
               <div class="row mt-5">
-                  <label class="form-check">
-                              <input class="form-check-input" type="checkbox">
-                              <span class="form-check-label">
-                               I agree to take the weather course and understand its content.
-                              </span>
-                              
-                            </label>
-                  
-                   <div class="card-footer text-end">
-                  <button type="submit" class="btn btn-primary submit-course">Submit</button>
-                </div>
-              </div>
+    <form id="course-form">
+        {% csrf_token %}
+        <label class="form-check">
+            <input class="form-check-input" type="checkbox" id="course-check">
+            <span class="form-check-label">
+                I agree to take the weather course and understand its content.
+            </span>
+        </label>
+        
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
               
               
               
@@ -45,5 +49,6 @@
 
                             
 </div>
+        <script src="{% static 'js/observer/course.js'%}" ></script>
 
 {% endblock content%}

@@ -1,8 +1,8 @@
  {% include 'partials/messages.html' %}
 
-        <form method="post" class="itco-cform register_observer">
+        <form method="post" class="itco-cform register">
           {% csrf_token %}
-            <input type="hidden" name="register-type" value="{{ type }}" id="register-type" />
+             <input type="hidden" value="subscriber" id="type"/>
           <div class="row">
             <div class="col-sm-6">
               <div class="contact-field">

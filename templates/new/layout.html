@@ -211,7 +211,7 @@
                               </a>
                             </div>
                             <div class="btn-box">
-                              <a class="thm-btn" href="{% url 'register'%}?t=obs ">
+                              <a class="thm-btn" href="{% url 'observer'%}?t=obs ">
                                 <span class="txt">Become an Observer</span>
                               </a>
                             </div>
@@ -229,7 +229,7 @@
                       <i class="fas fa-times"></i>
                     </div>
                     <div class="nav-logo">
-                      <a href="index.html">
+                      <a href="/">
                         GreenAware
                         <!-- <img src="assets/images/logo/site-logo.png" alt="Logo" -->
                         />
@@ -296,23 +296,23 @@
                     <div class="footer-social">
                       <div class="footer-social-icon d-flex">
                         <a
-                          href="{% static 'https://www.facebook.com/' %}"
+                          href="/"
                           target="_blank"
                         >
                           <i class="fa-brands fa-facebook-f"></i
                         ></a>
                         <a
-                          href="{% static 'https://www.linkedin.com/' %}"
+                          href="/"
                           target="_blank"
                           ><i class="fa-brands fa-linkedin-in"></i
                         ></a>
                         <a
-                          href="{% static 'https://twitter.com/' %}"
+                         href="/"
                           target="_blank"
                           ><i class="fa-brands fa-twitter"></i
                         ></a>
                         <a
-                          href="{% static 'https://www.instagram.com/' %}"
+                          href="/"
                           target="_blank"
                           ><i class="fa-brands fa-instagram"></i
                         ></a>
@@ -328,7 +328,7 @@
                     <div class="footer-links">
                       <ul>
                         <li>
-                          <a href="{% static url 'pricing_plan' %}">Subscription Plans</a>
+                          <a  href="{% url 'api_pricing' %}">Subscription Plans</a>
                         </li>
                         <li>
                           <a href="#">Weather Monitoring</a>
@@ -353,10 +353,10 @@
                   <div class="footer-widget-content">
                     <div class="footer-links">
                       <ul>
-                        <li><a href="{% static url 'about' %}">What We Do</a></li>
-                        <li><a href="{% static url 'about' %}"">Faq ask</a></li>
-                        <li><a href="{% static url 'contact' %}">Contact Us</a></li>
-                        <li><a href="{% static url 'api' %}">API</a></li>
+                        <li><a href="{%  url 'about' %}">What We Do</a></li>
+                        <li><a href="{%  url 'about' %}"">Faq ask</a></li>
+                        <li><a href="{%  url 'contact' %}">Contact Us</a></li>
+                        <li><a href="{%  url 'api' %}">API</a></li>
                       </ul>
                     </div>
                   </div>

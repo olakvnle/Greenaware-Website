@@ -1,3 +1,4 @@
+{% load static %}
 <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none">
   <div class="container-xl">
     <button
@@ -154,13 +155,17 @@
           data-bs-toggle="dropdown"
           aria-label="Open user menu"
         >
-          <span
-            class="avatar avatar-sm"
-            style="background-image: url(./static/avatars/000m.jpg)"
-          ></span>
+                    <span class="avatar avatar-sm" style="background-image: url('{% static 'assets/images/user.webp' %}');"></span>
+
           <div class="d-none d-xl-block ps-2">
-            <div>Paweł Kuna</div>
-            <div class="mt-1 small text-secondary">UI Designer</div>
+            <div>{{ request.user.first_name }}</div>
+            <div class="mt-1 small text-secondary">
+    {% if request.user.is_observer %}
+        Observer
+    {% elif request.user.is_authenticated %}
+        Subscriber
+    {% endif %}
+</div>
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

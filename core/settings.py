@@ -15,9 +15,9 @@ from pathlib import Path
 from os import getenv, path
 from django.core.management.utils import get_random_secret_key  # for generating secret key
 import dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 """
 Custom Settings
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users',
     'corsheaders',
     'rest_framework',
+    'payment',
 
 ]
 
@@ -58,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',# for Access Cross-Origin Resource Sharin
+    'corsheaders.middleware.CorsMiddleware',  # for Access Cross-Origin Resource Sharin
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -117,18 +118,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
-
 """
 Custom Setting for Authentication Backend
 """
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-
-
 
 """
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
@@ -140,7 +135,8 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'admin@rashkemsoft.com.ng'
 
-
+STRIPE_PUBLISHABLE_KEY = getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = getenv('STRIPE_SECRET_KEY')
 
 CORS_ALLOWED_ORIGINS = []
 
